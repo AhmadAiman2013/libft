@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/11 00:54:23 by abin-ali          #+#    #+#             */
-/*   Updated: 2023/12/11 11:15:59 by marvin           ###   ########.fr       */
+/*   Created: 2023/12/11 11:19:23 by marvin            #+#    #+#             */
+/*   Updated: 2023/12/11 11:19:23 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-void *ft_calloc(int count, int size)
-{
-	void *ptr;
+char *ft_substr(char const *s, unsigned int start, size_t len){
+    char *str;
+    size_t i;
 
-	ptr = malloc(count * size);
-	if (ptr == NULL)
-	{
-		return (NULL);
-	}
-	while (count * size > 0)
-	{
-		((char *)ptr)[count * size - 1] = 0;
-		count--;
-	}
-	return (ptr);
+    i = 0;
+    str = (char *)malloc(sizeof(char) * len + 1);
+    if (str == NULL)
+        return (NULL);
+    while (i < len)
+    {
+        str[i] = s[start + i];
+        i++;
+    }
+    str[i] = '\0';
+    return (str);
 }
